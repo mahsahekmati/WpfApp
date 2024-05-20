@@ -1,0 +1,81 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:anbardari.window"
+        xmlns:PersianDateControls="clr-namespace:Arash.PersianDateControls;assembly=PersianDateControls" x:Class="anbardari.window.win_add_product"
+        mc:Ignorable="d"
+        Title="win_add_product" Height="450" Width="800"  WindowStyle="None" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Rectangle HorizontalAlignment="Center" Height="414" Stroke="Black" VerticalAlignment="Center" Width="780">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/img/back22.jpg" Opacity="0.2" Stretch="Fill"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Label Content=" نام کالا" HorizontalAlignment="Left" Margin="645,102,0,0" VerticalAlignment="Top" Height="37" Width="96" Foreground="Black" FontSize="22"/>
+        <Label Content="توضیحات" HorizontalAlignment="Left" Margin="625,155,0,0" VerticalAlignment="Top" FontSize="22" Foreground="Black" Height="37" Width="96"/>
+        <TextBox x:Name="txt_product_name" TabIndex="0"  HorizontalAlignment="Left" Margin="384,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="201" Height="39">
+            <TextBox.Effect>
+                <DropShadowEffect/>
+            </TextBox.Effect>
+            <TextBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBox.Background>
+        </TextBox>
+        <TextBox x:Name="txt_productdesc" TabIndex="1" HorizontalAlignment="Left" Margin="384,156,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="201" Height="69">
+            <TextBox.Effect>
+                <DropShadowEffect/>
+            </TextBox.Effect>
+            <TextBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBox.Background>
+        </TextBox>
+        <Button Content="افزودن کالا" x:Name="btn_create_product" HorizontalAlignment="Left" Margin="109,265,0,0" VerticalAlignment="Top" Height="42" Width="120" Click="btn_create_product_Click" FontSize="18" FontWeight="Bold" FontFamily="Arial" TabIndex="5">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Rectangle HorizontalAlignment="Center" RadiusX="20" RadiusY="20" Height="66" Margin="0,18,0,0" Stroke="Black" VerticalAlignment="Top" Width="780">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Label Content="فرم افزودن کالا جدید" HorizontalContentAlignment="Center" HorizontalAlignment="Center" Margin="0,28,0,0" VerticalAlignment="Top" Width="244" FontSize="24" Height="56" FontFamily="Arial" FontWeight="Bold"/>
+        <Image HorizontalAlignment="Left" Height="154" Margin="92,102,0,0" VerticalAlignment="Top" Width="162" Source="/img/box_icon.png"/>
+        <Button Content="خروج" x:Name="btn_exit" HorizontalAlignment="Left" Margin="109,337,0,0" VerticalAlignment="Top" Height="42" Width="120" Click="btn_exit_Click" FontSize="18" FontWeight="Bold" FontFamily="Arial" TabIndex="6">
+            <Button.Effect>
+                <DropShadowEffect/>
+            </Button.Effect>
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="Black"/>
+                    <GradientStop Color="White" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Label Content="تصویر کالا" HorizontalAlignment="Left" Margin="634,372,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Image x:Name="productimage" HorizontalAlignment="Left" Height="100" Margin="432,334,0,0" VerticalAlignment="Top" Width="100" Source="/img/product2.gif" MouseDown="productimage_MouseDown"/>
+        <Label x:Name="lbl_username" Content="" HorizontalAlignment="Left" Margin="389,248,0,0" VerticalAlignment="Top" Width="185" Height="28"/>
+        <Label Content="کاربر ثبت کننده" HorizontalAlignment="Left" Margin="582,235,0,0" VerticalAlignment="Top" FontSize="22" Foreground="Black" Height="37" Width="155"/>
+        <Label Content="تاریخ:" FlowDirection="RightToLeft" HorizontalAlignment="Left" Margin="624,284,0,0" VerticalAlignment="Top" FontSize="22" Foreground="Black" Height="50" Width="96"/>
+        <Label x:Name="lbl_date" Content="" HorizontalAlignment="Left" Margin="393,284,0,0" VerticalAlignment="Top" Width="185" Height="33"/>
+        <PersianDateControls:PersianDatePicker x:Name="tarikh" Visibility="Hidden" HorizontalAlignment="Left" Margin="156,410,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>

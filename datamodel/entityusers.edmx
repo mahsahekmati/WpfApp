@@ -1,0 +1,1443 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="anbardariModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="customerid" />
+          </Key>
+          <Property Name="customerid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customername" Type="nvarchar" MaxLength="50" />
+          <Property Name="customerfamily" Type="nvarchar" MaxLength="50" />
+          <Property Name="customertel" Type="nvarchar" MaxLength="50" />
+          <Property Name="customeraddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="userid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="inventory">
+          <Key>
+            <PropertyRef Name="inventoryid" />
+          </Key>
+          <Property Name="inventoryid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="inventorycount" Type="int" Nullable="false" />
+          <Property Name="inventorydate" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="inventorydesc" Type="text" />
+          <Property Name="userid" Type="int" Nullable="false" />
+          <Property Name="productid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="orderdetail">
+          <Key>
+            <PropertyRef Name="orderdetailid" />
+          </Key>
+          <Property Name="orderdetailid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="productid" Type="int" />
+          <Property Name="orderid" Type="int" />
+          <Property Name="count" Type="int" />
+          <Property Name="price" Type="bigint" />
+          <Property Name="sumprice" Type="bigint" />
+        </EntityType>
+        <EntityType Name="orders">
+          <Key>
+            <PropertyRef Name="orderid" />
+          </Key>
+          <Property Name="orderid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="customerid" Type="int" />
+          <Property Name="userid" Type="int" />
+          <Property Name="orderprice" Type="bigint" />
+          <Property Name="orderdate" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="productid" />
+          </Key>
+          <Property Name="productid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="productname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="productdesc" Type="text" />
+          <Property Name="productlastfee" Type="bigint" Nullable="false" />
+          <Property Name="productlastsuply" Type="int" Nullable="false" />
+          <Property Name="productimage" Type="image" />
+          <Property Name="userid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="productprice">
+          <Key>
+            <PropertyRef Name="productpriceid" />
+          </Key>
+          <Property Name="productpriceid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="productpricepurch" Type="bigint" Nullable="false" />
+          <Property Name="productpricesell" Type="bigint" Nullable="false" />
+          <Property Name="productpricedate" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="productpricedesc" Type="text" />
+          <Property Name="productid" Type="int" Nullable="false" />
+          <Property Name="userid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="systempart">
+          <Key>
+            <PropertyRef Name="systempartid" />
+          </Key>
+          <Property Name="systempartid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="systempartname" Type="nvarchar" MaxLength="50" />
+          <Property Name="systempartdetail" Type="nvarchar" MaxLength="200" />
+          <Property Name="systempartlevel" Type="int" />
+        </EntityType>
+        <EntityType Name="userlog">
+          <Key>
+            <PropertyRef Name="userlogid" />
+          </Key>
+          <Property Name="userlogid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="computername" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="ipaddress" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="enterdatetime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="exitdatetime" Type="varchar" MaxLength="150" />
+          <Property Name="userid" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="users">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" />
+          <Property Name="userfamily" Type="varchar" MaxLength="50" />
+          <Property Name="usertel" Type="varchar" MaxLength="30" />
+          <Property Name="usergender" Type="tinyint" />
+          <Property Name="useractive" Type="tinyint" />
+          <Property Name="userusername" Type="varchar" MaxLength="50" />
+          <Property Name="userpassword" Type="varchar" MaxLength="250" />
+          <Property Name="logindate" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'anbardari.dbo.v_customer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_customer">
+          <Key>
+            <PropertyRef Name="customerid" />
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="customerid" Type="int" Nullable="false" />
+          <Property Name="customername" Type="nvarchar" MaxLength="50" />
+          <Property Name="customerfamily" Type="nvarchar" MaxLength="50" />
+          <Property Name="customertel" Type="nvarchar" MaxLength="50" />
+          <Property Name="customeraddress" Type="nvarchar" MaxLength="100" />
+          <Property Name="userid" Type="int" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" />
+          <Property Name="userfamily" Type="varchar" MaxLength="50" />
+          <Property Name="fullname" Type="varchar" MaxLength="101" />
+          <Property Name="customerfullname" Type="nvarchar" MaxLength="101" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'anbardari.dbo.v_inventory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_inventory">
+          <Key>
+            <PropertyRef Name="inventoryid" />
+            <PropertyRef Name="inventorycount" />
+            <PropertyRef Name="inventorydate" />
+            <PropertyRef Name="userid" />
+            <PropertyRef Name="productid" />
+            <PropertyRef Name="productname" />
+          </Key>
+          <Property Name="inventoryid" Type="int" Nullable="false" />
+          <Property Name="inventorycount" Type="int" Nullable="false" />
+          <Property Name="inventorydate" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="inventorydesc" Type="text" />
+          <Property Name="userid" Type="int" Nullable="false" />
+          <Property Name="productid" Type="int" Nullable="false" />
+          <Property Name="productname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" />
+          <Property Name="userfamily" Type="varchar" MaxLength="50" />
+          <Property Name="fullname" Type="varchar" MaxLength="101" />
+          <Property Name="inventorystatus" Type="varchar" MaxLength="8" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'anbardari.dbo.v_orderdetail' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_orderdetail">
+          <Key>
+            <PropertyRef Name="orderdetailid" />
+            <PropertyRef Name="productname" />
+            <PropertyRef Name="productlastsuply" />
+            <PropertyRef Name="productlastfee" />
+          </Key>
+          <Property Name="orderdetailid" Type="int" Nullable="false" />
+          <Property Name="productid" Type="int" />
+          <Property Name="orderid" Type="int" />
+          <Property Name="count" Type="int" />
+          <Property Name="price" Type="bigint" />
+          <Property Name="sumprice" Type="bigint" />
+          <Property Name="productname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="productlastsuply" Type="int" Nullable="false" />
+          <Property Name="productlastfee" Type="bigint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'anbardari.dbo.v_product' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_product">
+          <Key>
+            <PropertyRef Name="productid" />
+            <PropertyRef Name="productname" />
+            <PropertyRef Name="productlastfee" />
+            <PropertyRef Name="productlastsuply" />
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="productid" Type="int" Nullable="false" />
+          <Property Name="productname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="productdesc" Type="text" />
+          <Property Name="productlastfee" Type="bigint" Nullable="false" />
+          <Property Name="productlastsuply" Type="int" Nullable="false" />
+          <Property Name="productimage" Type="image" />
+          <Property Name="userid" Type="int" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" />
+          <Property Name="userfamily" Type="varchar" MaxLength="50" />
+          <Property Name="fullname" Type="varchar" MaxLength="101" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'anbardari.dbo.v_productprice' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_productprice">
+          <Key>
+            <PropertyRef Name="productpriceid" />
+            <PropertyRef Name="productpricepurch" />
+            <PropertyRef Name="productpricesell" />
+            <PropertyRef Name="productpricedate" />
+            <PropertyRef Name="productid" />
+            <PropertyRef Name="userid" />
+            <PropertyRef Name="productname" />
+          </Key>
+          <Property Name="productpriceid" Type="int" Nullable="false" />
+          <Property Name="productpricepurch" Type="bigint" Nullable="false" />
+          <Property Name="productpricesell" Type="bigint" Nullable="false" />
+          <Property Name="productpricedate" Type="varchar" MaxLength="20" Nullable="false" />
+          <Property Name="productpricedesc" Type="text" />
+          <Property Name="productid" Type="int" Nullable="false" />
+          <Property Name="userid" Type="int" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" />
+          <Property Name="userfamily" Type="varchar" MaxLength="50" />
+          <Property Name="productname" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="fullname" Type="varchar" MaxLength="101" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'anbardari.dbo.v_systempart' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_systempart">
+          <Key>
+            <PropertyRef Name="systempartid" />
+          </Key>
+          <Property Name="systempartid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="systempartname" Type="nvarchar" MaxLength="50" />
+          <Property Name="systempartdetail" Type="nvarchar" MaxLength="200" />
+          <Property Name="systempartlevel" Type="int" />
+          <Property Name="childcount" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'anbardari.dbo.v_userlog' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_userlog">
+          <Key>
+            <PropertyRef Name="userlogid" />
+            <PropertyRef Name="computername" />
+            <PropertyRef Name="ipaddress" />
+            <PropertyRef Name="enterdatetime" />
+            <PropertyRef Name="Expr3" />
+          </Key>
+          <Property Name="userlogid" Type="int" Nullable="false" />
+          <Property Name="computername" Type="varchar" MaxLength="150" Nullable="false" />
+          <Property Name="ipaddress" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="enterdatetime" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Expr1" Type="varchar" MaxLength="50" />
+          <Property Name="Expr2" Type="varchar" MaxLength="50" />
+          <Property Name="Expr3" Type="int" Nullable="false" />
+          <Property Name="exitdatetime" Type="varchar" MaxLength="150" />
+          <Property Name="fullname" Type="varchar" MaxLength="101" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'anbardari.dbo.v_users' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="v_users">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="username" Type="varchar" MaxLength="50" />
+          <Property Name="userfamily" Type="varchar" MaxLength="50" />
+          <Property Name="usertel" Type="varchar" MaxLength="30" />
+          <Property Name="usergender" Type="tinyint" />
+          <Property Name="useractive" Type="tinyint" />
+          <Property Name="userusername" Type="varchar" MaxLength="50" />
+          <Property Name="userpassword" Type="varchar" MaxLength="50" />
+          <Property Name="logindate" Type="varchar" MaxLength="50" />
+          <Property Name="gender" Type="varchar" MaxLength="5" />
+          <Property Name="active" Type="varchar" MaxLength="8" />
+        </EntityType>
+        <Association Name="FK_customer_users">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="customer" Type="Self.customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_inventory_product">
+          <End Role="product" Type="Self.product" Multiplicity="1" />
+          <End Role="inventory" Type="Self.inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="productid" />
+            </Principal>
+            <Dependent Role="inventory">
+              <PropertyRef Name="productid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_inventory_users">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="inventory" Type="Self.inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="inventory">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orderdetail_orders">
+          <End Role="orders" Type="Self.orders" Multiplicity="0..1" />
+          <End Role="orderdetail" Type="Self.orderdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="orders">
+              <PropertyRef Name="orderid" />
+            </Principal>
+            <Dependent Role="orderdetail">
+              <PropertyRef Name="orderid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orderdetail_product">
+          <End Role="product" Type="Self.product" Multiplicity="0..1" />
+          <End Role="orderdetail" Type="Self.orderdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="productid" />
+            </Principal>
+            <Dependent Role="orderdetail">
+              <PropertyRef Name="productid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orders_customer">
+          <End Role="customer" Type="Self.customer" Multiplicity="0..1" />
+          <End Role="orders" Type="Self.orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="customerid" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="customerid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orders_users">
+          <End Role="users" Type="Self.users" Multiplicity="0..1" />
+          <End Role="orders" Type="Self.orders" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="orders">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_product_users">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="product" Type="Self.product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="product">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_productprice_productid">
+          <End Role="product" Type="Self.product" Multiplicity="1" />
+          <End Role="productprice" Type="Self.productprice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="productid" />
+            </Principal>
+            <Dependent Role="productprice">
+              <PropertyRef Name="productid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_productprice_userid">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="productprice" Type="Self.productprice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="productprice">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_userlog_users">
+          <End Role="users" Type="Self.users" Multiplicity="1" />
+          <End Role="userlog" Type="Self.userlog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="users">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="userlog">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+        <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_creatediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="version" Type="int" Mode="In" />
+          <Parameter Name="definition" Type="varbinary(max)" Mode="In" />
+        </Function>
+        <Function Name="sp_dropdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagramdefinition" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_helpdiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_renamediagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
+          <Parameter Name="owner_id" Type="int" Mode="In" />
+          <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_update_laststuck" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="inventorycount" Type="int" Mode="In" />
+          <Parameter Name="productid" Type="int" Mode="In" />
+        </Function>
+        <Function Name="sp_update_userlog" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="userid" Type="int" Mode="In" />
+          <Parameter Name="exitdatetime" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sp_updatefee_product" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="productid" Type="int" Mode="In" />
+          <Parameter Name="productlastfee" Type="bigint" Mode="In" />
+        </Function>
+        <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <EntityContainer Name="anbardariModelStoreContainer">
+          <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="inventory" EntityType="Self.inventory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="orderdetail" EntityType="Self.orderdetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="orders" EntityType="Self.orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="product" EntityType="Self.product" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="productprice" EntityType="Self.productprice" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="systempart" EntityType="Self.systempart" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="userlog" EntityType="Self.userlog" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="v_customer" EntityType="Self.v_customer" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_customer].[customerid] AS [customerid], 
+    [v_customer].[customername] AS [customername], 
+    [v_customer].[customerfamily] AS [customerfamily], 
+    [v_customer].[customertel] AS [customertel], 
+    [v_customer].[customeraddress] AS [customeraddress], 
+    [v_customer].[userid] AS [userid], 
+    [v_customer].[username] AS [username], 
+    [v_customer].[userfamily] AS [userfamily], 
+    [v_customer].[fullname] AS [fullname], 
+    [v_customer].[customerfullname] AS [customerfullname]
+    FROM [dbo].[v_customer] AS [v_customer]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_inventory" EntityType="Self.v_inventory" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_inventory].[inventoryid] AS [inventoryid], 
+    [v_inventory].[inventorycount] AS [inventorycount], 
+    [v_inventory].[inventorydate] AS [inventorydate], 
+    [v_inventory].[inventorydesc] AS [inventorydesc], 
+    [v_inventory].[userid] AS [userid], 
+    [v_inventory].[productid] AS [productid], 
+    [v_inventory].[productname] AS [productname], 
+    [v_inventory].[username] AS [username], 
+    [v_inventory].[userfamily] AS [userfamily], 
+    [v_inventory].[fullname] AS [fullname], 
+    [v_inventory].[inventorystatus] AS [inventorystatus]
+    FROM [dbo].[v_inventory] AS [v_inventory]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_orderdetail" EntityType="Self.v_orderdetail" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_orderdetail].[orderdetailid] AS [orderdetailid], 
+    [v_orderdetail].[productid] AS [productid], 
+    [v_orderdetail].[orderid] AS [orderid], 
+    [v_orderdetail].[count] AS [count], 
+    [v_orderdetail].[price] AS [price], 
+    [v_orderdetail].[sumprice] AS [sumprice], 
+    [v_orderdetail].[productname] AS [productname], 
+    [v_orderdetail].[productlastsuply] AS [productlastsuply], 
+    [v_orderdetail].[productlastfee] AS [productlastfee]
+    FROM [dbo].[v_orderdetail] AS [v_orderdetail]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_product" EntityType="Self.v_product" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_product].[productid] AS [productid], 
+    [v_product].[productname] AS [productname], 
+    [v_product].[productdesc] AS [productdesc], 
+    [v_product].[productlastfee] AS [productlastfee], 
+    [v_product].[productlastsuply] AS [productlastsuply], 
+    [v_product].[productimage] AS [productimage], 
+    [v_product].[userid] AS [userid], 
+    [v_product].[username] AS [username], 
+    [v_product].[userfamily] AS [userfamily], 
+    [v_product].[fullname] AS [fullname]
+    FROM [dbo].[v_product] AS [v_product]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_productprice" EntityType="Self.v_productprice" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_productprice].[productpriceid] AS [productpriceid], 
+    [v_productprice].[productpricepurch] AS [productpricepurch], 
+    [v_productprice].[productpricesell] AS [productpricesell], 
+    [v_productprice].[productpricedate] AS [productpricedate], 
+    [v_productprice].[productpricedesc] AS [productpricedesc], 
+    [v_productprice].[productid] AS [productid], 
+    [v_productprice].[userid] AS [userid], 
+    [v_productprice].[username] AS [username], 
+    [v_productprice].[userfamily] AS [userfamily], 
+    [v_productprice].[productname] AS [productname], 
+    [v_productprice].[fullname] AS [fullname]
+    FROM [dbo].[v_productprice] AS [v_productprice]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_systempart" EntityType="Self.v_systempart" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_systempart].[systempartid] AS [systempartid], 
+    [v_systempart].[systempartname] AS [systempartname], 
+    [v_systempart].[systempartdetail] AS [systempartdetail], 
+    [v_systempart].[systempartlevel] AS [systempartlevel], 
+    [v_systempart].[childcount] AS [childcount]
+    FROM [dbo].[v_systempart] AS [v_systempart]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_userlog" EntityType="Self.v_userlog" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_userlog].[userlogid] AS [userlogid], 
+    [v_userlog].[computername] AS [computername], 
+    [v_userlog].[ipaddress] AS [ipaddress], 
+    [v_userlog].[enterdatetime] AS [enterdatetime], 
+    [v_userlog].[Expr1] AS [Expr1], 
+    [v_userlog].[Expr2] AS [Expr2], 
+    [v_userlog].[Expr3] AS [Expr3], 
+    [v_userlog].[exitdatetime] AS [exitdatetime], 
+    [v_userlog].[fullname] AS [fullname]
+    FROM [dbo].[v_userlog] AS [v_userlog]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="v_users" EntityType="Self.v_users" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [v_users].[userid] AS [userid], 
+    [v_users].[username] AS [username], 
+    [v_users].[userfamily] AS [userfamily], 
+    [v_users].[usertel] AS [usertel], 
+    [v_users].[usergender] AS [usergender], 
+    [v_users].[useractive] AS [useractive], 
+    [v_users].[userusername] AS [userusername], 
+    [v_users].[userpassword] AS [userpassword], 
+    [v_users].[logindate] AS [logindate], 
+    [v_users].[gender] AS [gender], 
+    [v_users].[active] AS [active]
+    FROM [dbo].[v_users] AS [v_users]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_customer_users" Association="Self.FK_customer_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="customer" EntitySet="customer" />
+          </AssociationSet>
+          <AssociationSet Name="FK_inventory_product" Association="Self.FK_inventory_product">
+            <End Role="product" EntitySet="product" />
+            <End Role="inventory" EntitySet="inventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_inventory_users" Association="Self.FK_inventory_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="inventory" EntitySet="inventory" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orderdetail_orders" Association="Self.FK_orderdetail_orders">
+            <End Role="orders" EntitySet="orders" />
+            <End Role="orderdetail" EntitySet="orderdetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orderdetail_product" Association="Self.FK_orderdetail_product">
+            <End Role="product" EntitySet="product" />
+            <End Role="orderdetail" EntitySet="orderdetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orders_customer" Association="Self.FK_orders_customer">
+            <End Role="customer" EntitySet="customer" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orders_users" Association="Self.FK_orders_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="orders" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_product_users" Association="Self.FK_product_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="product" EntitySet="product" />
+          </AssociationSet>
+          <AssociationSet Name="fk_productprice_productid" Association="Self.fk_productprice_productid">
+            <End Role="product" EntitySet="product" />
+            <End Role="productprice" EntitySet="productprice" />
+          </AssociationSet>
+          <AssociationSet Name="fk_productprice_userid" Association="Self.fk_productprice_userid">
+            <End Role="users" EntitySet="users" />
+            <End Role="productprice" EntitySet="productprice" />
+          </AssociationSet>
+          <AssociationSet Name="FK_userlog_users" Association="Self.FK_userlog_users">
+            <End Role="users" EntitySet="users" />
+            <End Role="userlog" EntitySet="userlog" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="anbardariModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="user">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="userfamily" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usertel" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="usergender" Type="Byte" />
+          <Property Name="useractive" Type="Byte" />
+          <Property Name="userusername" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="userpassword" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="logindate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="customers" Relationship="anbardariModel.FK_customer_users" FromRole="user" ToRole="customer" />
+          <NavigationProperty Name="products" Relationship="anbardariModel.FK_product_users" FromRole="user" ToRole="product" />
+          <NavigationProperty Name="inventories" Relationship="anbardariModel.FK_inventory_users" FromRole="user" ToRole="inventory" />
+          <NavigationProperty Name="productprices" Relationship="anbardariModel.fk_productprice_userid" FromRole="user" ToRole="productprice" />
+          <NavigationProperty Name="userlogs" Relationship="anbardariModel.FK_userlog_users" FromRole="user" ToRole="userlog" />
+          <NavigationProperty Name="orders" Relationship="anbardariModel.FK_orders_users" FromRole="user" ToRole="order" />
+        </EntityType>
+        <EntityContainer Name="anbardariEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="users" EntityType="Self.user" />
+          <EntitySet Name="v_users" EntityType="anbardariModel.v_users" />
+          <EntitySet Name="customers" EntityType="anbardariModel.customer" />
+          <EntitySet Name="products" EntityType="anbardariModel.product" />
+          <EntitySet Name="v_product" EntityType="anbardariModel.v_product" />
+          <AssociationSet Name="FK_customer_users" Association="anbardariModel.FK_customer_users">
+            <End Role="user" EntitySet="users" />
+            <End Role="customer" EntitySet="customers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_product_users" Association="anbardariModel.FK_product_users">
+            <End Role="user" EntitySet="users" />
+            <End Role="product" EntitySet="products" />
+          </AssociationSet>
+          <EntitySet Name="inventories" EntityType="anbardariModel.inventory" />
+          <EntitySet Name="v_inventory" EntityType="anbardariModel.v_inventory" />
+          <AssociationSet Name="FK_inventory_product" Association="anbardariModel.FK_inventory_product">
+            <End Role="product" EntitySet="products" />
+            <End Role="inventory" EntitySet="inventories" />
+          </AssociationSet>
+          <AssociationSet Name="FK_inventory_users" Association="anbardariModel.FK_inventory_users">
+            <End Role="user" EntitySet="users" />
+            <End Role="inventory" EntitySet="inventories" />
+          </AssociationSet>
+          <FunctionImport Name="sp_updatefee_product">
+            <Parameter Name="productid" Mode="In" Type="Int32" />
+            <Parameter Name="productlastfee" Mode="In" Type="Int64" />
+          </FunctionImport>
+          <FunctionImport Name="sp_update_laststuck">
+            <Parameter Name="inventorycount" Mode="In" Type="Int32" />
+            <Parameter Name="productid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="productprices" EntityType="anbardariModel.productprice" />
+          <EntitySet Name="userlogs" EntityType="anbardariModel.userlog" />
+          <EntitySet Name="v_productprice" EntityType="anbardariModel.v_productprice" />
+          <AssociationSet Name="fk_productprice_productid" Association="anbardariModel.fk_productprice_productid">
+            <End Role="product" EntitySet="products" />
+            <End Role="productprice" EntitySet="productprices" />
+          </AssociationSet>
+          <AssociationSet Name="fk_productprice_userid" Association="anbardariModel.fk_productprice_userid">
+            <End Role="user" EntitySet="users" />
+            <End Role="productprice" EntitySet="productprices" />
+          </AssociationSet>
+          <AssociationSet Name="FK_userlog_users" Association="anbardariModel.FK_userlog_users">
+            <End Role="user" EntitySet="users" />
+            <End Role="userlog" EntitySet="userlogs" />
+          </AssociationSet>
+          <FunctionImport Name="update_userlog">
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="exitdatetime" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_update_userlog">
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+            <Parameter Name="exitdatetime" Mode="In" Type="String" />
+          </FunctionImport>
+          <EntitySet Name="v_userlog" EntityType="anbardariModel.v_userlog" />
+          <EntitySet Name="v_customer" EntityType="anbardariModel.v_customer" />
+          <FunctionImport Name="sp_alterdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_creatediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="version" Mode="In" Type="Int32" />
+            <Parameter Name="definition" Mode="In" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="sp_dropdiagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(anbardariModel.sp_helpdiagramdefinition_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(anbardariModel.sp_helpdiagrams_Result)">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="sp_renamediagram">
+            <Parameter Name="diagramname" Mode="In" Type="String" />
+            <Parameter Name="owner_id" Mode="In" Type="Int32" />
+            <Parameter Name="new_diagramname" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="sp_upgraddiagrams" />
+          <EntitySet Name="orderdetails" EntityType="anbardariModel.orderdetail" />
+          <EntitySet Name="orders" EntityType="anbardariModel.order" />
+          <EntitySet Name="sysdiagrams" EntityType="anbardariModel.sysdiagram" />
+          <EntitySet Name="v_orderdetail" EntityType="anbardariModel.v_orderdetail" />
+          <AssociationSet Name="FK_orders_customer" Association="anbardariModel.FK_orders_customer">
+            <End Role="customer" EntitySet="customers" />
+            <End Role="order" EntitySet="orders" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orderdetail_orders" Association="anbardariModel.FK_orderdetail_orders">
+            <End Role="order" EntitySet="orders" />
+            <End Role="orderdetail" EntitySet="orderdetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orderdetail_product" Association="anbardariModel.FK_orderdetail_product">
+            <End Role="product" EntitySet="products" />
+            <End Role="orderdetail" EntitySet="orderdetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK_orders_users" Association="anbardariModel.FK_orders_users">
+            <End Role="user" EntitySet="users" />
+            <End Role="order" EntitySet="orders" />
+          </AssociationSet>
+          <EntitySet Name="systemparts" EntityType="anbardariModel.systempart" />
+          <EntitySet Name="v_systempart" EntityType="anbardariModel.v_systempart" />
+          </EntityContainer>
+        <EntityType Name="v_users">
+          <Key>
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="userid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="userfamily" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="usertel" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="usergender" Type="Byte" />
+          <Property Name="useractive" Type="Byte" />
+          <Property Name="userusername" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="userpassword" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="logindate" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="gender" Type="String" MaxLength="5" FixedLength="false" Unicode="false" />
+          <Property Name="active" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="customer">
+          <Key>
+            <PropertyRef Name="customerid" />
+          </Key>
+          <Property Name="customerid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customername" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="customerfamily" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="customertel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="customeraddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="userid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="anbardariModel.FK_customer_users" FromRole="customer" ToRole="user" />
+          <NavigationProperty Name="orders" Relationship="anbardariModel.FK_orders_customer" FromRole="customer" ToRole="order" />
+        </EntityType>
+        <EntityType Name="product">
+          <Key>
+            <PropertyRef Name="productid" />
+          </Key>
+          <Property Name="productid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="productname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="productdesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="productlastfee" Type="Int64" Nullable="false" />
+          <Property Name="productlastsuply" Type="Int32" Nullable="false" />
+          <Property Name="productimage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="userid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="anbardariModel.FK_product_users" FromRole="product" ToRole="user" />
+          <NavigationProperty Name="inventories" Relationship="anbardariModel.FK_inventory_product" FromRole="product" ToRole="inventory" />
+          <NavigationProperty Name="productprices" Relationship="anbardariModel.fk_productprice_productid" FromRole="product" ToRole="productprice" />
+          <NavigationProperty Name="orderdetails" Relationship="anbardariModel.FK_orderdetail_product" FromRole="product" ToRole="orderdetail" />
+        </EntityType>
+        <EntityType Name="v_product">
+          <Key>
+            <PropertyRef Name="productid" />
+            <PropertyRef Name="productname" />
+            <PropertyRef Name="productlastfee" />
+            <PropertyRef Name="productlastsuply" />
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="productid" Type="Int32" Nullable="false" />
+          <Property Name="productname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="productdesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="productlastfee" Type="Int64" Nullable="false" />
+          <Property Name="productlastsuply" Type="Int32" Nullable="false" />
+          <Property Name="productimage" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="userid" Type="Int32" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="userfamily" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fullname" Type="String" MaxLength="101" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_customer_users">
+          <End Type="anbardariModel.user" Role="user" Multiplicity="1" />
+          <End Type="anbardariModel.customer" Role="customer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="customer">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_product_users">
+          <End Type="anbardariModel.user" Role="user" Multiplicity="1" />
+          <End Type="anbardariModel.product" Role="product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="product">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="inventory">
+          <Key>
+            <PropertyRef Name="inventoryid" />
+          </Key>
+          <Property Name="inventoryid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="inventorycount" Type="Int32" Nullable="false" />
+          <Property Name="inventorydate" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="inventorydesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="userid" Type="Int32" Nullable="false" />
+          <Property Name="productid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="product" Relationship="anbardariModel.FK_inventory_product" FromRole="inventory" ToRole="product" />
+          <NavigationProperty Name="user" Relationship="anbardariModel.FK_inventory_users" FromRole="inventory" ToRole="user" />
+        </EntityType>
+        <EntityType Name="v_inventory">
+          <Key>
+            <PropertyRef Name="inventoryid" />
+            <PropertyRef Name="inventorycount" />
+            <PropertyRef Name="inventorydate" />
+            <PropertyRef Name="userid" />
+            <PropertyRef Name="productid" />
+            <PropertyRef Name="productname" />
+          </Key>
+          <Property Name="inventoryid" Type="Int32" Nullable="false" />
+          <Property Name="inventorycount" Type="Int32" Nullable="false" />
+          <Property Name="inventorydate" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="inventorydesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="userid" Type="Int32" Nullable="false" />
+          <Property Name="productid" Type="Int32" Nullable="false" />
+          <Property Name="productname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="userfamily" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fullname" Type="String" MaxLength="101" FixedLength="false" Unicode="false" />
+          <Property Name="inventorystatus" Type="String" MaxLength="8" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_inventory_product">
+          <End Type="anbardariModel.product" Role="product" Multiplicity="1" />
+          <End Type="anbardariModel.inventory" Role="inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="productid" />
+            </Principal>
+            <Dependent Role="inventory">
+              <PropertyRef Name="productid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_inventory_users">
+          <End Type="anbardariModel.user" Role="user" Multiplicity="1" />
+          <End Type="anbardariModel.inventory" Role="inventory" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="inventory">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="productprice">
+          <Key>
+            <PropertyRef Name="productpriceid" />
+          </Key>
+          <Property Name="productpriceid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="productpricepurch" Type="Int64" Nullable="false" />
+          <Property Name="productpricesell" Type="Int64" Nullable="false" />
+          <Property Name="productpricedate" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="productpricedesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="productid" Type="Int32" Nullable="false" />
+          <Property Name="userid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="product" Relationship="anbardariModel.fk_productprice_productid" FromRole="productprice" ToRole="product" />
+          <NavigationProperty Name="user" Relationship="anbardariModel.fk_productprice_userid" FromRole="productprice" ToRole="user" />
+        </EntityType>
+        <EntityType Name="userlog">
+          <Key>
+            <PropertyRef Name="userlogid" />
+          </Key>
+          <Property Name="userlogid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="computername" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ipaddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="enterdatetime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="exitdatetime" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="userid" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="user" Relationship="anbardariModel.FK_userlog_users" FromRole="userlog" ToRole="user" />
+        </EntityType>
+        <EntityType Name="v_productprice">
+          <Key>
+            <PropertyRef Name="productpriceid" />
+            <PropertyRef Name="productpricepurch" />
+            <PropertyRef Name="productpricesell" />
+            <PropertyRef Name="productpricedate" />
+            <PropertyRef Name="productid" />
+            <PropertyRef Name="userid" />
+            <PropertyRef Name="productname" />
+          </Key>
+          <Property Name="productpriceid" Type="Int32" Nullable="false" />
+          <Property Name="productpricepurch" Type="Int64" Nullable="false" />
+          <Property Name="productpricesell" Type="Int64" Nullable="false" />
+          <Property Name="productpricedate" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="productpricedesc" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="productid" Type="Int32" Nullable="false" />
+          <Property Name="userid" Type="Int32" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="userfamily" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="productname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="fullname" Type="String" MaxLength="101" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="fk_productprice_productid">
+          <End Type="anbardariModel.product" Role="product" Multiplicity="1" />
+          <End Type="anbardariModel.productprice" Role="productprice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="productid" />
+            </Principal>
+            <Dependent Role="productprice">
+              <PropertyRef Name="productid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_productprice_userid">
+          <End Type="anbardariModel.user" Role="user" Multiplicity="1" />
+          <End Type="anbardariModel.productprice" Role="productprice" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="productprice">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_userlog_users">
+          <End Type="anbardariModel.user" Role="user" Multiplicity="1" />
+          <End Type="anbardariModel.userlog" Role="userlog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="userlog">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="v_userlog">
+          <Key>
+            <PropertyRef Name="userlogid" />
+            <PropertyRef Name="computername" />
+            <PropertyRef Name="ipaddress" />
+            <PropertyRef Name="enterdatetime" />
+            <PropertyRef Name="Expr3" />
+          </Key>
+          <Property Name="userlogid" Type="Int32" Nullable="false" />
+          <Property Name="computername" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="ipaddress" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="enterdatetime" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Expr1" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Expr2" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Expr3" Type="Int32" Nullable="false" />
+          <Property Name="exitdatetime" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="fullname" Type="String" MaxLength="101" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="v_customer">
+          <Key>
+            <PropertyRef Name="customerid" />
+            <PropertyRef Name="userid" />
+          </Key>
+          <Property Name="customerid" Type="Int32" Nullable="false" />
+          <Property Name="customername" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="customerfamily" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="customertel" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="customeraddress" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="userid" Type="Int32" Nullable="false" />
+          <Property Name="username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="userfamily" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="fullname" Type="String" MaxLength="101" FixedLength="false" Unicode="false" />
+          <Property Name="customerfullname" Type="String" MaxLength="101" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <ComplexType Name="sp_helpdiagramdefinition_Result">
+          <Property Type="Int32" Name="version" Nullable="true" />
+          <Property Type="Binary" Name="definition" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="sp_helpdiagrams_Result">
+          <Property Type="String" Name="Database" Nullable="true" MaxLength="128" />
+          <Property Type="String" Name="Name" Nullable="false" MaxLength="128" />
+          <Property Type="Int32" Name="ID" Nullable="false" />
+          <Property Type="String" Name="Owner" Nullable="true" MaxLength="128" />
+          <Property Type="Int32" Name="OwnerID" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="orderdetail">
+          <Key>
+            <PropertyRef Name="orderdetailid" />
+          </Key>
+          <Property Name="orderdetailid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="productid" Type="Int32" />
+          <Property Name="orderid" Type="Int32" />
+          <Property Name="count" Type="Int32" />
+          <Property Name="price" Type="Int64" />
+          <Property Name="sumprice" Type="Int64" />
+          <NavigationProperty Name="order" Relationship="anbardariModel.FK_orderdetail_orders" FromRole="orderdetail" ToRole="order" />
+          <NavigationProperty Name="product" Relationship="anbardariModel.FK_orderdetail_product" FromRole="orderdetail" ToRole="product" />
+        </EntityType>
+        <EntityType Name="order">
+          <Key>
+            <PropertyRef Name="orderid" />
+          </Key>
+          <Property Name="orderid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="customerid" Type="Int32" />
+          <Property Name="userid" Type="Int32" />
+          <Property Name="orderprice" Type="Int64" />
+          <Property Name="orderdate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="customer" Relationship="anbardariModel.FK_orders_customer" FromRole="order" ToRole="customer" />
+          <NavigationProperty Name="orderdetails" Relationship="anbardariModel.FK_orderdetail_orders" FromRole="order" ToRole="orderdetail" />
+          <NavigationProperty Name="user" Relationship="anbardariModel.FK_orders_users" FromRole="order" ToRole="user" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="v_orderdetail">
+          <Key>
+            <PropertyRef Name="orderdetailid" />
+            <PropertyRef Name="productname" />
+            <PropertyRef Name="productlastsuply" />
+            <PropertyRef Name="productlastfee" />
+          </Key>
+          <Property Name="orderdetailid" Type="Int32" Nullable="false" />
+          <Property Name="productid" Type="Int32" />
+          <Property Name="orderid" Type="Int32" />
+          <Property Name="count" Type="Int32" />
+          <Property Name="price" Type="Int64" />
+          <Property Name="sumprice" Type="Int64" />
+          <Property Name="productname" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="productlastsuply" Type="Int32" Nullable="false" />
+          <Property Name="productlastfee" Type="Int64" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_orders_customer">
+          <End Type="anbardariModel.customer" Role="customer" Multiplicity="0..1" />
+          <End Type="anbardariModel.order" Role="order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="customer">
+              <PropertyRef Name="customerid" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="customerid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orderdetail_orders">
+          <End Type="anbardariModel.order" Role="order" Multiplicity="0..1" />
+          <End Type="anbardariModel.orderdetail" Role="orderdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="order">
+              <PropertyRef Name="orderid" />
+            </Principal>
+            <Dependent Role="orderdetail">
+              <PropertyRef Name="orderid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orderdetail_product">
+          <End Type="anbardariModel.product" Role="product" Multiplicity="0..1" />
+          <End Type="anbardariModel.orderdetail" Role="orderdetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="product">
+              <PropertyRef Name="productid" />
+            </Principal>
+            <Dependent Role="orderdetail">
+              <PropertyRef Name="productid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_orders_users">
+          <End Type="anbardariModel.user" Role="user" Multiplicity="0..1" />
+          <End Type="anbardariModel.order" Role="order" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="user">
+              <PropertyRef Name="userid" />
+            </Principal>
+            <Dependent Role="order">
+              <PropertyRef Name="userid" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="systempart">
+          <Key>
+            <PropertyRef Name="systempartid" />
+          </Key>
+          <Property Name="systempartid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="systempartname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="systempartdetail" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="systempartlevel" Type="Int32" />
+        </EntityType>
+        <EntityType Name="v_systempart">
+          <Key>
+            <PropertyRef Name="systempartid" />
+          </Key>
+          <Property Name="systempartid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="systempartname" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="systempartdetail" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="systempartlevel" Type="Int32" />
+          <Property Name="childcount" Type="Int32" />
+        </EntityType>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="anbardariModelStoreContainer" CdmEntityContainer="anbardariEntities">
+          <EntitySetMapping Name="users">
+            <EntityTypeMapping TypeName="anbardariModel.user">
+              <MappingFragment StoreEntitySet="users">
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="userfamily" ColumnName="userfamily" />
+                <ScalarProperty Name="usertel" ColumnName="usertel" />
+                <ScalarProperty Name="usergender" ColumnName="usergender" />
+                <ScalarProperty Name="useractive" ColumnName="useractive" />
+                <ScalarProperty Name="userusername" ColumnName="userusername" />
+                <ScalarProperty Name="userpassword" ColumnName="userpassword" />
+                <ScalarProperty Name="logindate" ColumnName="logindate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_users">
+            <EntityTypeMapping TypeName="anbardariModel.v_users">
+              <MappingFragment StoreEntitySet="v_users">
+                <ScalarProperty Name="active" ColumnName="active" />
+                <ScalarProperty Name="gender" ColumnName="gender" />
+                <ScalarProperty Name="logindate" ColumnName="logindate" />
+                <ScalarProperty Name="userpassword" ColumnName="userpassword" />
+                <ScalarProperty Name="userusername" ColumnName="userusername" />
+                <ScalarProperty Name="useractive" ColumnName="useractive" />
+                <ScalarProperty Name="usergender" ColumnName="usergender" />
+                <ScalarProperty Name="usertel" ColumnName="usertel" />
+                <ScalarProperty Name="userfamily" ColumnName="userfamily" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customers">
+            <EntityTypeMapping TypeName="anbardariModel.customer">
+              <MappingFragment StoreEntitySet="customer">
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="customeraddress" ColumnName="customeraddress" />
+                <ScalarProperty Name="customertel" ColumnName="customertel" />
+                <ScalarProperty Name="customerfamily" ColumnName="customerfamily" />
+                <ScalarProperty Name="customername" ColumnName="customername" />
+                <ScalarProperty Name="customerid" ColumnName="customerid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="products">
+            <EntityTypeMapping TypeName="anbardariModel.product">
+              <MappingFragment StoreEntitySet="product">
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="productimage" ColumnName="productimage" />
+                <ScalarProperty Name="productlastsuply" ColumnName="productlastsuply" />
+                <ScalarProperty Name="productlastfee" ColumnName="productlastfee" />
+                <ScalarProperty Name="productdesc" ColumnName="productdesc" />
+                <ScalarProperty Name="productname" ColumnName="productname" />
+                <ScalarProperty Name="productid" ColumnName="productid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_product">
+            <EntityTypeMapping TypeName="anbardariModel.v_product">
+              <MappingFragment StoreEntitySet="v_product">
+                <ScalarProperty Name="fullname" ColumnName="fullname" />
+                <ScalarProperty Name="userfamily" ColumnName="userfamily" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="productimage" ColumnName="productimage" />
+                <ScalarProperty Name="productlastsuply" ColumnName="productlastsuply" />
+                <ScalarProperty Name="productlastfee" ColumnName="productlastfee" />
+                <ScalarProperty Name="productdesc" ColumnName="productdesc" />
+                <ScalarProperty Name="productname" ColumnName="productname" />
+                <ScalarProperty Name="productid" ColumnName="productid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="inventories">
+            <EntityTypeMapping TypeName="anbardariModel.inventory">
+              <MappingFragment StoreEntitySet="inventory">
+                <ScalarProperty Name="productid" ColumnName="productid" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="inventorydesc" ColumnName="inventorydesc" />
+                <ScalarProperty Name="inventorydate" ColumnName="inventorydate" />
+                <ScalarProperty Name="inventorycount" ColumnName="inventorycount" />
+                <ScalarProperty Name="inventoryid" ColumnName="inventoryid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_inventory">
+            <EntityTypeMapping TypeName="anbardariModel.v_inventory">
+              <MappingFragment StoreEntitySet="v_inventory">
+                <ScalarProperty Name="inventorystatus" ColumnName="inventorystatus" />
+                <ScalarProperty Name="fullname" ColumnName="fullname" />
+                <ScalarProperty Name="userfamily" ColumnName="userfamily" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="productname" ColumnName="productname" />
+                <ScalarProperty Name="productid" ColumnName="productid" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="inventorydesc" ColumnName="inventorydesc" />
+                <ScalarProperty Name="inventorydate" ColumnName="inventorydate" />
+                <ScalarProperty Name="inventorycount" ColumnName="inventorycount" />
+                <ScalarProperty Name="inventoryid" ColumnName="inventoryid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_updatefee_product" FunctionName="anbardariModel.Store.sp_updatefee_product" />
+          <FunctionImportMapping FunctionImportName="sp_update_laststuck" FunctionName="anbardariModel.Store.sp_update_laststuck" />
+          <EntitySetMapping Name="productprices">
+            <EntityTypeMapping TypeName="anbardariModel.productprice">
+              <MappingFragment StoreEntitySet="productprice">
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="productid" ColumnName="productid" />
+                <ScalarProperty Name="productpricedesc" ColumnName="productpricedesc" />
+                <ScalarProperty Name="productpricedate" ColumnName="productpricedate" />
+                <ScalarProperty Name="productpricesell" ColumnName="productpricesell" />
+                <ScalarProperty Name="productpricepurch" ColumnName="productpricepurch" />
+                <ScalarProperty Name="productpriceid" ColumnName="productpriceid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="userlogs">
+            <EntityTypeMapping TypeName="anbardariModel.userlog">
+              <MappingFragment StoreEntitySet="userlog">
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="exitdatetime" ColumnName="exitdatetime" />
+                <ScalarProperty Name="enterdatetime" ColumnName="enterdatetime" />
+                <ScalarProperty Name="ipaddress" ColumnName="ipaddress" />
+                <ScalarProperty Name="computername" ColumnName="computername" />
+                <ScalarProperty Name="userlogid" ColumnName="userlogid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_productprice">
+            <EntityTypeMapping TypeName="anbardariModel.v_productprice">
+              <MappingFragment StoreEntitySet="v_productprice">
+                <ScalarProperty Name="fullname" ColumnName="fullname" />
+                <ScalarProperty Name="productname" ColumnName="productname" />
+                <ScalarProperty Name="userfamily" ColumnName="userfamily" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="productid" ColumnName="productid" />
+                <ScalarProperty Name="productpricedesc" ColumnName="productpricedesc" />
+                <ScalarProperty Name="productpricedate" ColumnName="productpricedate" />
+                <ScalarProperty Name="productpricesell" ColumnName="productpricesell" />
+                <ScalarProperty Name="productpricepurch" ColumnName="productpricepurch" />
+                <ScalarProperty Name="productpriceid" ColumnName="productpriceid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_update_userlog" FunctionName="anbardariModel.Store.sp_update_userlog" />
+          <EntitySetMapping Name="v_userlog">
+            <EntityTypeMapping TypeName="anbardariModel.v_userlog">
+              <MappingFragment StoreEntitySet="v_userlog">
+                <ScalarProperty Name="fullname" ColumnName="fullname" />
+                <ScalarProperty Name="exitdatetime" ColumnName="exitdatetime" />
+                <ScalarProperty Name="Expr3" ColumnName="Expr3" />
+                <ScalarProperty Name="Expr2" ColumnName="Expr2" />
+                <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+                <ScalarProperty Name="enterdatetime" ColumnName="enterdatetime" />
+                <ScalarProperty Name="ipaddress" ColumnName="ipaddress" />
+                <ScalarProperty Name="computername" ColumnName="computername" />
+                <ScalarProperty Name="userlogid" ColumnName="userlogid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_customer">
+            <EntityTypeMapping TypeName="anbardariModel.v_customer">
+              <MappingFragment StoreEntitySet="v_customer">
+                <ScalarProperty Name="customerfullname" ColumnName="customerfullname" />
+                <ScalarProperty Name="fullname" ColumnName="fullname" />
+                <ScalarProperty Name="userfamily" ColumnName="userfamily" />
+                <ScalarProperty Name="username" ColumnName="username" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="customeraddress" ColumnName="customeraddress" />
+                <ScalarProperty Name="customertel" ColumnName="customertel" />
+                <ScalarProperty Name="customerfamily" ColumnName="customerfamily" />
+                <ScalarProperty Name="customername" ColumnName="customername" />
+                <ScalarProperty Name="customerid" ColumnName="customerid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="anbardariModel.Store.sp_alterdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="anbardariModel.Store.sp_creatediagram" />
+          <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="anbardariModel.Store.sp_dropdiagram" />
+          <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="anbardariModel.Store.sp_helpdiagramdefinition">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="anbardariModel.sp_helpdiagramdefinition_Result">
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="anbardariModel.Store.sp_helpdiagrams">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="anbardariModel.sp_helpdiagrams_Result">
+                <ScalarProperty Name="Database" ColumnName="Database" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Owner" ColumnName="Owner" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="anbardariModel.Store.sp_renamediagram" />
+          <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="anbardariModel.Store.sp_upgraddiagrams" />
+          <EntitySetMapping Name="orderdetails">
+            <EntityTypeMapping TypeName="anbardariModel.orderdetail">
+              <MappingFragment StoreEntitySet="orderdetail">
+                <ScalarProperty Name="sumprice" ColumnName="sumprice" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="count" ColumnName="count" />
+                <ScalarProperty Name="orderid" ColumnName="orderid" />
+                <ScalarProperty Name="productid" ColumnName="productid" />
+                <ScalarProperty Name="orderdetailid" ColumnName="orderdetailid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="orders">
+            <EntityTypeMapping TypeName="anbardariModel.order">
+              <MappingFragment StoreEntitySet="orders">
+                <ScalarProperty Name="orderdate" ColumnName="orderdate" />
+                <ScalarProperty Name="orderprice" ColumnName="orderprice" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="customerid" ColumnName="customerid" />
+                <ScalarProperty Name="orderid" ColumnName="orderid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="anbardariModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="definition" ColumnName="definition" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="name" ColumnName="name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_orderdetail">
+            <EntityTypeMapping TypeName="anbardariModel.v_orderdetail">
+              <MappingFragment StoreEntitySet="v_orderdetail">
+                <ScalarProperty Name="productlastfee" ColumnName="productlastfee" />
+                <ScalarProperty Name="productlastsuply" ColumnName="productlastsuply" />
+                <ScalarProperty Name="productname" ColumnName="productname" />
+                <ScalarProperty Name="sumprice" ColumnName="sumprice" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="count" ColumnName="count" />
+                <ScalarProperty Name="orderid" ColumnName="orderid" />
+                <ScalarProperty Name="productid" ColumnName="productid" />
+                <ScalarProperty Name="orderdetailid" ColumnName="orderdetailid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="systemparts">
+            <EntityTypeMapping TypeName="anbardariModel.systempart">
+              <MappingFragment StoreEntitySet="systempart">
+                <ScalarProperty Name="systempartlevel" ColumnName="systempartlevel" />
+                <ScalarProperty Name="systempartdetail" ColumnName="systempartdetail" />
+                <ScalarProperty Name="systempartname" ColumnName="systempartname" />
+                <ScalarProperty Name="systempartid" ColumnName="systempartid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="v_systempart">
+            <EntityTypeMapping TypeName="anbardariModel.v_systempart">
+              <MappingFragment StoreEntitySet="v_systempart">
+                <ScalarProperty Name="childcount" ColumnName="childcount" />
+                <ScalarProperty Name="systempartlevel" ColumnName="systempartlevel" />
+                <ScalarProperty Name="systempartdetail" ColumnName="systempartdetail" />
+                <ScalarProperty Name="systempartname" ColumnName="systempartname" />
+                <ScalarProperty Name="systempartid" ColumnName="systempartid" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

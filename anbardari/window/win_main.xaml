@@ -1,0 +1,93 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:anbardari.window"
+        xmlns:Custom="http://schemas.microsoft.com/winfx/2006/xaml/presentation/ribbon" xmlns:PersianDateControls="clr-namespace:Arash.PersianDateControls;assembly=PersianDateControls" x:Class="anbardari.window.win_main"
+        mc:Ignorable="d"
+        Title="win_main" Height="495" Width="826" Loaded="Window_Loaded" Closing="Window_Closing">
+
+    <Grid Margin="0,0,2,-6">
+
+        <Custom:Ribbon FlowDirection="RightToLeft" Margin="0,10,0,294">
+            <Custom:Ribbon.QuickAccessToolBar>
+                <Custom:RibbonQuickAccessToolBar>
+                    <Custom:RibbonSplitButton SmallImageSource="/img/advanced.tiff">
+                        <Custom:RibbonSplitMenuItem Header="درباره ما " ImageSource="/img/44.png"/>
+                        <Custom:RibbonSplitMenuItem Header="ارتباط با ما  " ImageSource="/img/12.png"/>
+                        <Custom:RibbonSplitMenuItem Header="خروج " ImageSource="/img/advanced.tiff" Click="btn_exit_click"/>
+
+                    </Custom:RibbonSplitButton>
+                </Custom:RibbonQuickAccessToolBar>
+            </Custom:Ribbon.QuickAccessToolBar>
+
+            <Custom:Ribbon.ApplicationMenu>
+                <Custom:RibbonApplicationMenu>
+                    <Custom:RibbonApplicationSplitMenuItem Header="تعریف کاربران" ImageSource="/img/12.png" Click="btn_windows_user"/>
+                    <Custom:RibbonApplicationSplitMenuItem Header=" تعریف دسترسی کاربران" ImageSource="/img/12.png"/>
+                    <Custom:RibbonApplicationSplitMenuItem x:Name="system_part" Header=" تعریف اجزای سیستم" ImageSource="/img/12.png" Click="system_part_Click"/>
+                    <Custom:RibbonApplicationSplitMenuItem Header="تغییر کلمه عبور" ImageSource="/img/12.png"/>
+                    <Custom:RibbonApplicationSplitMenuItem Header="کنترل ورود و خروج کاربران" ImageSource="/img/12.png" Click="RibbonApplicationSplitMenuItem_Click_1"/>
+                    <Custom:RibbonApplicationSplitMenuItem Header="تعریف مشتریان" ImageSource="/img/12.png" Click="RibbonApplicationSplitMenuItem_Click"/>
+                    <Custom:RibbonApplicationSplitMenuItem Header="تهیه فایل پشتیبان " ImageSource="/img/12.png"/>
+                </Custom:RibbonApplicationMenu>
+            </Custom:Ribbon.ApplicationMenu>
+
+            <Custom:RibbonTab Header="کالاها" >
+                <Custom:RibbonGroup Header="نمایش کالاها " Height="70" Margin="0,0,0,10">
+                    <Custom:RibbonButton Label="نمایش کالاها" LargeImageSource="../img/product2.gif" Click="showproduct_Click" />
+                </Custom:RibbonGroup>
+
+                <Custom:RibbonGroup Header="بخش کالاها " Height="70" Margin="0,0,0,10">
+                    <Custom:RibbonButton Label="مدیریت قیمت" SmallImageSource="../img/13.png" Margin="0,0,0,5"/>
+                    <Custom:RibbonButton Label="موجودی کالاا" SmallImageSource="../img/4.png"/>
+                    <Custom:RibbonButton Label="نمودار فروش" SmallImageSource="../img/nemudar.jpg"/>
+
+                </Custom:RibbonGroup>
+                <Custom:RibbonGroup/>
+
+            </Custom:RibbonTab>
+
+            <Custom:RibbonTab Header="فروش" Height="80px">
+                <Custom:RibbonGroup Header="نمایش فاکتور " Height="70" Margin="0,0,0,10">
+                    <Custom:RibbonButton x:Name="createfactor" Label="ثبت سفارش" LargeImageSource="../img/product2.gif" Click="createfactor_Click" />
+                </Custom:RibbonGroup>
+            </Custom:RibbonTab>
+
+            <Custom:RibbonTab Header="انبارداری" Height="80px"/>
+
+            <Custom:RibbonTab Header="گزارشات" Margin="64,0,-2,0" />
+
+        </Custom:Ribbon>
+        <Rectangle HorizontalAlignment="Left" Height="100" Margin="14,331,0,0" Stroke="Black" VerticalAlignment="Top" Width="784">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFEFF0F3"/>
+                    <GradientStop Color="#FF9DB2F3" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+
+
+
+        </Rectangle>
+        <Label Content="نام کاربر" HorizontalAlignment="Left" Margin="706,360,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label Content="نام خانوادگی کاربر" HorizontalAlignment="Left" Margin="497,362,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label Content="ساعت ورود" HorizontalAlignment="Left" Margin="312,360,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label Content="سیستم فروش و انبار داری" HorizontalAlignment="Left" Margin="21,358,0,0" VerticalAlignment="Top" FontSize="20"/>
+        <Label x:Name="lbl_name" Content="" HorizontalAlignment="Left" Margin="658,347,0,0" VerticalAlignment="Top" Height="48" Width="54" FontSize="20"/>
+        <Label x:Name="lbl_family" Content="" HorizontalAlignment="Left" Margin="441,343,0,0" VerticalAlignment="Top" Height="48" Width="54" FontSize="20"/>
+        <Label x:Name="lbl_time" Content="" HorizontalAlignment="Left" Margin="252,354,0,0" VerticalAlignment="Top" Height="48" Width="54" FontSize="20"/>
+
+
+
+
+
+        <PersianDateControls:PersianDatePicker x:Name="tarikh" Visibility="Hidden" HorizontalAlignment="Left" Margin="318,276,0,0" VerticalAlignment="Top"/>
+
+
+
+
+
+    </Grid>
+</Window>

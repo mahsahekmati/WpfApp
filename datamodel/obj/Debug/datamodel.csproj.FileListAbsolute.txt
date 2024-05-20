@@ -1,0 +1,12 @@
+H:\wpf\anbardari\datamodel\bin\Debug\datamodel.dll.config
+H:\wpf\anbardari\datamodel\bin\Debug\datamodel.dll
+H:\wpf\anbardari\datamodel\bin\Debug\datamodel.pdb
+H:\wpf\anbardari\datamodel\bin\Debug\EntityFramework.dll
+H:\wpf\anbardari\datamodel\bin\Debug\EntityFramework.SqlServer.dll
+H:\wpf\anbardari\datamodel\bin\Debug\EntityFramework.xml
+H:\wpf\anbardari\datamodel\bin\Debug\EntityFramework.SqlServer.xml
+H:\wpf\anbardari\datamodel\obj\Debug\datamodel.csproj.AssemblyReference.cache
+H:\wpf\anbardari\datamodel\obj\Debug\datamodel.csproj.CoreCompileInputs.cache
+H:\wpf\anbardari\datamodel\obj\Debug\datamodel.csproj.CopyComplete
+H:\wpf\anbardari\datamodel\obj\Debug\datamodel.dll
+H:\wpf\anbardari\datamodel\obj\Debug\datamodel.pdb

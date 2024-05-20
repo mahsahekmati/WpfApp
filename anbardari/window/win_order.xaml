@@ -1,0 +1,196 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:anbardari.window"
+        xmlns:PersianDateControls="clr-namespace:Arash.PersianDateControls;assembly=PersianDateControls" x:Class="anbardari.window.win_order"
+        mc:Ignorable="d"
+        Title="win_order" Height="600" Width="1000" Background="Transparent" AllowsTransparency="True" WindowStyle="None" Loaded="Window_Loaded">
+    <Grid >
+        <Rectangle HorizontalAlignment="Left" Height="600" Margin="-5,4,0,0" Stroke="Black" VerticalAlignment="Top" Width="1000" RadiusY="20" RadiusX="20">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/img/back23.jpg"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle HorizontalAlignment="Center" Height="100" Margin="0,22,0,0" Stroke="Black" VerticalAlignment="Top" Width="926" RadiusY="20" RadiusX="20">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="White"/>
+                    <GradientStop Color="#FFE07FC6" Offset="1"/>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Rectangle RadiusX="20" RadiusY="20"  HorizontalAlignment="Left" Height="202" Margin="566,146,0,0" Stroke="Black" VerticalAlignment="Top" Width="396" Fill="#FFF5F0F0"/>
+        <Rectangle HorizontalAlignment="Left" Height="242" Margin="31,144,0,0" Stroke="Black" VerticalAlignment="Top" Width="481" Fill="#FFF5F0F0"/>
+        <Rectangle HorizontalAlignment="Left" Height="202" Margin="570,368,0,0" Stroke="Black" VerticalAlignment="Top" Width="390" Fill="#FFF5F0F0"/>
+        <Rectangle HorizontalAlignment="Left" Height="156" Margin="36,414,0,0" Stroke="Black" VerticalAlignment="Top" Width="478" Fill="#FFF5F0F0"/>
+        <Label Content="فرم ثبت سفارشات" FlowDirection="RightToLeft" HorizontalAlignment="Left" Margin="699,51,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" FontFamily="Arial" FontSize="18" FontWeight="Bold"/>
+        <Label Content="انتخاب مشتری" FlowDirection="RightToLeft" HorizontalAlignment="Left" Margin="847,151,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" FontFamily="Arial" FontSize="18" FontWeight="Bold"/>
+        <Label Content="نام مشتری" FlowDirection="RightToLeft" HorizontalAlignment="Left" Margin="868,276,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" FontFamily="Arial" FontWeight="Bold" FontSize="16"/>
+        <Label Content="تلفن مشتری" FlowDirection="RightToLeft" HorizontalAlignment="Left" Margin="864,297,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" FontFamily="Arial" FontWeight="Bold" FontSize="16" RenderTransformOrigin="0.847,0.634"/>
+        <Label Content="اطلاعات فاکتور" FlowDirection="RightToLeft" HorizontalAlignment="Left" Margin="833,380,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" FontFamily="Arial" FontSize="18" FontWeight="Bold"/>
+        <Label Content="کاربر ثبت کننده:" FlowDirection="RightToLeft" HorizontalAlignment="Left" Margin="832,415,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" FontFamily="Arial" FontSize="18" FontWeight="Bold"/>
+        <Label Content="تاریخ:" FlowDirection="RightToLeft" HorizontalAlignment="Left" Margin="832,443,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" FontFamily="Arial" FontSize="18" FontWeight="Bold"/>
+        <Label Content="نام مشتری:" FlowDirection="RightToLeft" HorizontalAlignment="Left" Margin="833,469,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" FontFamily="Arial" FontSize="18" FontWeight="Bold"/>
+        <Label Content="شماره فاکتور:" FlowDirection="RightToLeft" HorizontalAlignment="Left" Margin="833,501,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" FontFamily="Arial" FontSize="18" FontWeight="Bold"/>
+        <Label Content="مبلغ فاکتور:" FlowDirection="RightToLeft" HorizontalAlignment="Left" Margin="833,531,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" FontFamily="Arial" FontSize="18" FontWeight="Bold"/>
+        <TextBox x:Name="txt_customername" HorizontalAlignment="Left" Margin="702,283,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163" IsEnabled="False">
+            <TextBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF5EBF1"/>
+                    <GradientStop Color="#FFEAA5D1" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBox.Background>
+        </TextBox>
+        <TextBox x:Name="txt_customertel" HorizontalAlignment="Left" Margin="702,307,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163" IsEnabled="False">
+            <TextBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF5EBF1"/>
+                    <GradientStop Color="#FFEAA5D1" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBox.Background>
+        </TextBox>
+        <Button x:Name="btn_create" Content="ایجادفاکتور" HorizontalAlignment="Left" Margin="588,317,0,0" VerticalAlignment="Top" Height="23" Width="88" Click="btn_create_Click_1">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF5F1F4"/>
+                    <GradientStop Color="#FFD87DBC" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Image x:Name="img_search" HorizontalAlignment="Left" Height="34" Margin="613,0,0,0" VerticalAlignment="Center" Width="68" Source="/img/search.ico" MouseDown="img_search_MouseDown"/>
+        <Image HorizontalAlignment="Left" Height="100" Margin="832,18,0,0" VerticalAlignment="Top" Width="100" Source="/img/invoice.ico"/>
+        <Image x:Name="img_exit" HorizontalAlignment="Left" Height="60" Margin="68,33,0,0" VerticalAlignment="Top" Width="60" Source="/img/exit.png" MouseDown="img_exit_MouseDown"/>
+        <DataGrid x:Name="datagrid_customer"  Margin="592,186,64,324" FlowDirection="RightToLeft" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="شماره مشتری" Binding="{Binding customerid}"></DataGridTextColumn>
+                <DataGridTextColumn Header="نام مشتری" Binding="{Binding customerfullname}"></DataGridTextColumn>
+                <DataGridTextColumn Header="تلفن مشتری" Binding="{Binding customertel}"></DataGridTextColumn>
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <PersianDateControls:PersianDatePicker x:Name="tarikh" Visibility="Hidden" HorizontalAlignment="Left" Margin="378,75,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="lbl_userid" Content="" FlowDirection="RightToLeft" HorizontalAlignment="Left" Margin="689,417,0,0" VerticalAlignment="Top" Width="136"/>
+        <Label x:Name="lbl_tarikh" Content="" FlowDirection="RightToLeft" HorizontalAlignment="Left" Margin="687,444,0,0" VerticalAlignment="Top" Width="136"/>
+        <Label x:Name="lbl_customername" Content="" FlowDirection="RightToLeft" HorizontalAlignment="Left" Margin="698,474,0,0" VerticalAlignment="Top" Width="136"/>
+        <Label x:Name="lbl_factorid" Content="" FlowDirection="RightToLeft" HorizontalAlignment="Left" Margin="698,500,0,0" VerticalAlignment="Top" Width="136"/>
+        <Label x:Name="lbl_sum" Content="" FlowDirection="RightToLeft" HorizontalAlignment="Left" Margin="697,532,0,0" VerticalAlignment="Top" Width="136"/>
+        <Label Content="انتخاب کالا" FlowDirection="RightToLeft" HorizontalAlignment="Left" Margin="411,152,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" FontFamily="Arial" FontSize="18" FontWeight="Bold"/>
+        <DataGrid x:Name="datagrid_product"  Margin="54,184,505,335" FlowDirection="RightToLeft" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="شماره کالا" Binding="{Binding productid}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="Foreground" Value="Red"></Setter>
+                            <Setter Property="FontWeight" Value="Bold"></Setter>
+                        </Style>
+
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Foreground" Value="Green"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="نام کالا" Binding="{Binding productname}"/>
+                <DataGridTextColumn Header="توضیحات" Binding="{Binding productdesc}"/>
+                <DataGridTextColumn Header="اخرین قیمت" Binding="{Binding productlastfee}"/>
+                <DataGridTextColumn Header="اخرین موجودی" Binding="{Binding productlastsuply}"/>
+                <DataGridTextColumn Header="کابرثبت کننده" Binding="{Binding userid}"/>
+                <DataGridTemplateColumn Header="تصویر" Width="100" >
+                    <DataGridTemplateColumn.CellEditingTemplate>
+                        <DataTemplate >
+                            <Image Width="12" Height="12" Source="{Binding productimage}"></Image>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellEditingTemplate>
+                </DataGridTemplateColumn>
+
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="نام کالا" FlowDirection="RightToLeft" HorizontalAlignment="Left" Margin="428,266,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" FontFamily="Arial" FontWeight="Bold" FontSize="16"/>
+        <TextBox x:Name="txt_productname" HorizontalAlignment="Left" Margin="257,272,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="163" IsEnabled="False" Height="24">
+            <TextBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF5EBF1"/>
+                    <GradientStop Color="#FFEAA5D1" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBox.Background>
+        </TextBox>
+        <Label Content="کالای انتخاب شده" FlowDirection="RightToLeft" HorizontalAlignment="Left" Margin="403,311,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" FontFamily="Arial" FontWeight="Bold" FontSize="16"/>
+        <Label Content="تعداد موجود" FlowDirection="RightToLeft" HorizontalAlignment="Left" Margin="226,311,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" FontFamily="Arial" FontWeight="Bold" FontSize="16"/>
+        <Label Content="قیمت کالا" FlowDirection="RightToLeft" HorizontalAlignment="Left" Margin="114,311,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" FontFamily="Arial" FontWeight="Bold" FontSize="16"/>
+        <Label Content="تعداد" FlowDirection="RightToLeft" HorizontalAlignment="Left" Margin="467,348,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right" FontFamily="Arial" FontWeight="Bold" FontSize="16"/>
+        <Image x:Name="img_search_Copy" HorizontalAlignment="Left" Height="34" Margin="168,268,0,0" VerticalAlignment="Top" Width="68" Source="/img/search.ico" MouseDown="img_searchproduct_MouseDown"/>
+        <Button x:Name="btn_chooseproduct" Content="انتخاب" HorizontalAlignment="Left" Margin="51,277,0,0" VerticalAlignment="Top" Height="23" Width="88" Click="btn_chooseproduct_Click" >
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF5F1F4"/>
+                    <GradientStop Color="#FFD87DBC" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btn_createproduct" Content="ثبت کالا" HorizontalAlignment="Left" Margin="51,342,0,0" VerticalAlignment="Top" Height="23" Width="88"  RenderTransformOrigin="0.521,1.701" Click="btn_createproduct_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF5F1F4"/>
+                    <GradientStop Color="#FFD87DBC" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Label x:Name="lbl_productname" Content="" HorizontalAlignment="Left" Margin="300,306,0,0" VerticalAlignment="Top" Width="102"/>
+        <Label x:Name="lbl_productcount" Content="" HorizontalAlignment="Left" Margin="176,307,0,0" VerticalAlignment="Top" Width="50"/>
+        <Label x:Name="lbl_productprice" Content="" HorizontalAlignment="Left" Margin="39,309,0,0" VerticalAlignment="Top" Width="73"/>
+        <DataGrid x:Name="datagride_orderdetail"  AutoGenerateColumns="False" Margin="55,419,504,79" FlowDirection="RightToLeft">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="شماره کالا" Binding="{Binding productid}">
+                    <DataGridTextColumn.HeaderStyle>
+                        <Style TargetType="{x:Type DataGridColumnHeader}">
+                            <Setter Property="Foreground" Value="Red"></Setter>
+                            <Setter Property="FontWeight" Value="Bold"></Setter>
+                        </Style>
+
+                    </DataGridTextColumn.HeaderStyle>
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="{x:Type TextBlock}">
+                            <Setter Property="Foreground" Value="Green"></Setter>
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+                <DataGridTextColumn Header="نام کالا" Binding="{Binding productname}"/>
+
+                <DataGridTextColumn Header="اخرین قیمت" Binding="{Binding productlastfee}"/>
+                <DataGridTextColumn Header="تعداد" Binding="{Binding count}"/>
+
+
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <TextBox x:Name="txt_count" HorizontalAlignment="Left" Margin="322,350,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120">
+            <TextBox.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF5EBF1"/>
+                    <GradientStop Color="#FFEAA5D1" Offset="1"/>
+                </LinearGradientBrush>
+            </TextBox.Background>
+        </TextBox>
+        <Button x:Name="btn_deleteproduct" Content="حذف کالا" HorizontalAlignment="Left" Margin="359,530,0,0" VerticalAlignment="Top" Height="23" Width="77" Click="btn_deleteproduct_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF5F1F4"/>
+                    <GradientStop Color="#FFD87DBC" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+        <Button x:Name="btn_closeorder" Content="بستن فاکتور" HorizontalAlignment="Left" Margin="237,534,0,0" VerticalAlignment="Top" Click="btn_closeorder_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FFF5F1F4"/>
+                    <GradientStop Color="#FFD87DBC" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+
+    </Grid>
+</Window>

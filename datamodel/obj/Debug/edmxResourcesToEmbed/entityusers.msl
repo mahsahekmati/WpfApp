@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="anbardariModelStoreContainer" CdmEntityContainer="anbardariEntities">
+    <EntitySetMapping Name="users">
+      <EntityTypeMapping TypeName="anbardariModel.user">
+        <MappingFragment StoreEntitySet="users">
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="userfamily" ColumnName="userfamily" />
+          <ScalarProperty Name="usertel" ColumnName="usertel" />
+          <ScalarProperty Name="usergender" ColumnName="usergender" />
+          <ScalarProperty Name="useractive" ColumnName="useractive" />
+          <ScalarProperty Name="userusername" ColumnName="userusername" />
+          <ScalarProperty Name="userpassword" ColumnName="userpassword" />
+          <ScalarProperty Name="logindate" ColumnName="logindate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_users">
+      <EntityTypeMapping TypeName="anbardariModel.v_users">
+        <MappingFragment StoreEntitySet="v_users">
+          <ScalarProperty Name="active" ColumnName="active" />
+          <ScalarProperty Name="gender" ColumnName="gender" />
+          <ScalarProperty Name="logindate" ColumnName="logindate" />
+          <ScalarProperty Name="userpassword" ColumnName="userpassword" />
+          <ScalarProperty Name="userusername" ColumnName="userusername" />
+          <ScalarProperty Name="useractive" ColumnName="useractive" />
+          <ScalarProperty Name="usergender" ColumnName="usergender" />
+          <ScalarProperty Name="usertel" ColumnName="usertel" />
+          <ScalarProperty Name="userfamily" ColumnName="userfamily" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customers">
+      <EntityTypeMapping TypeName="anbardariModel.customer">
+        <MappingFragment StoreEntitySet="customer">
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="customeraddress" ColumnName="customeraddress" />
+          <ScalarProperty Name="customertel" ColumnName="customertel" />
+          <ScalarProperty Name="customerfamily" ColumnName="customerfamily" />
+          <ScalarProperty Name="customername" ColumnName="customername" />
+          <ScalarProperty Name="customerid" ColumnName="customerid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="products">
+      <EntityTypeMapping TypeName="anbardariModel.product">
+        <MappingFragment StoreEntitySet="product">
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="productimage" ColumnName="productimage" />
+          <ScalarProperty Name="productlastsuply" ColumnName="productlastsuply" />
+          <ScalarProperty Name="productlastfee" ColumnName="productlastfee" />
+          <ScalarProperty Name="productdesc" ColumnName="productdesc" />
+          <ScalarProperty Name="productname" ColumnName="productname" />
+          <ScalarProperty Name="productid" ColumnName="productid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_product">
+      <EntityTypeMapping TypeName="anbardariModel.v_product">
+        <MappingFragment StoreEntitySet="v_product">
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="userfamily" ColumnName="userfamily" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="productimage" ColumnName="productimage" />
+          <ScalarProperty Name="productlastsuply" ColumnName="productlastsuply" />
+          <ScalarProperty Name="productlastfee" ColumnName="productlastfee" />
+          <ScalarProperty Name="productdesc" ColumnName="productdesc" />
+          <ScalarProperty Name="productname" ColumnName="productname" />
+          <ScalarProperty Name="productid" ColumnName="productid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="inventories">
+      <EntityTypeMapping TypeName="anbardariModel.inventory">
+        <MappingFragment StoreEntitySet="inventory">
+          <ScalarProperty Name="productid" ColumnName="productid" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="inventorydesc" ColumnName="inventorydesc" />
+          <ScalarProperty Name="inventorydate" ColumnName="inventorydate" />
+          <ScalarProperty Name="inventorycount" ColumnName="inventorycount" />
+          <ScalarProperty Name="inventoryid" ColumnName="inventoryid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_inventory">
+      <EntityTypeMapping TypeName="anbardariModel.v_inventory">
+        <MappingFragment StoreEntitySet="v_inventory">
+          <ScalarProperty Name="inventorystatus" ColumnName="inventorystatus" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="userfamily" ColumnName="userfamily" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="productname" ColumnName="productname" />
+          <ScalarProperty Name="productid" ColumnName="productid" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="inventorydesc" ColumnName="inventorydesc" />
+          <ScalarProperty Name="inventorydate" ColumnName="inventorydate" />
+          <ScalarProperty Name="inventorycount" ColumnName="inventorycount" />
+          <ScalarProperty Name="inventoryid" ColumnName="inventoryid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_updatefee_product" FunctionName="anbardariModel.Store.sp_updatefee_product" />
+    <FunctionImportMapping FunctionImportName="sp_update_laststuck" FunctionName="anbardariModel.Store.sp_update_laststuck" />
+    <EntitySetMapping Name="productprices">
+      <EntityTypeMapping TypeName="anbardariModel.productprice">
+        <MappingFragment StoreEntitySet="productprice">
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="productid" ColumnName="productid" />
+          <ScalarProperty Name="productpricedesc" ColumnName="productpricedesc" />
+          <ScalarProperty Name="productpricedate" ColumnName="productpricedate" />
+          <ScalarProperty Name="productpricesell" ColumnName="productpricesell" />
+          <ScalarProperty Name="productpricepurch" ColumnName="productpricepurch" />
+          <ScalarProperty Name="productpriceid" ColumnName="productpriceid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="userlogs">
+      <EntityTypeMapping TypeName="anbardariModel.userlog">
+        <MappingFragment StoreEntitySet="userlog">
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="exitdatetime" ColumnName="exitdatetime" />
+          <ScalarProperty Name="enterdatetime" ColumnName="enterdatetime" />
+          <ScalarProperty Name="ipaddress" ColumnName="ipaddress" />
+          <ScalarProperty Name="computername" ColumnName="computername" />
+          <ScalarProperty Name="userlogid" ColumnName="userlogid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_productprice">
+      <EntityTypeMapping TypeName="anbardariModel.v_productprice">
+        <MappingFragment StoreEntitySet="v_productprice">
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="productname" ColumnName="productname" />
+          <ScalarProperty Name="userfamily" ColumnName="userfamily" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="productid" ColumnName="productid" />
+          <ScalarProperty Name="productpricedesc" ColumnName="productpricedesc" />
+          <ScalarProperty Name="productpricedate" ColumnName="productpricedate" />
+          <ScalarProperty Name="productpricesell" ColumnName="productpricesell" />
+          <ScalarProperty Name="productpricepurch" ColumnName="productpricepurch" />
+          <ScalarProperty Name="productpriceid" ColumnName="productpriceid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_update_userlog" FunctionName="anbardariModel.Store.sp_update_userlog" />
+    <EntitySetMapping Name="v_userlog">
+      <EntityTypeMapping TypeName="anbardariModel.v_userlog">
+        <MappingFragment StoreEntitySet="v_userlog">
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="exitdatetime" ColumnName="exitdatetime" />
+          <ScalarProperty Name="Expr3" ColumnName="Expr3" />
+          <ScalarProperty Name="Expr2" ColumnName="Expr2" />
+          <ScalarProperty Name="Expr1" ColumnName="Expr1" />
+          <ScalarProperty Name="enterdatetime" ColumnName="enterdatetime" />
+          <ScalarProperty Name="ipaddress" ColumnName="ipaddress" />
+          <ScalarProperty Name="computername" ColumnName="computername" />
+          <ScalarProperty Name="userlogid" ColumnName="userlogid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_customer">
+      <EntityTypeMapping TypeName="anbardariModel.v_customer">
+        <MappingFragment StoreEntitySet="v_customer">
+          <ScalarProperty Name="customerfullname" ColumnName="customerfullname" />
+          <ScalarProperty Name="fullname" ColumnName="fullname" />
+          <ScalarProperty Name="userfamily" ColumnName="userfamily" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="customeraddress" ColumnName="customeraddress" />
+          <ScalarProperty Name="customertel" ColumnName="customertel" />
+          <ScalarProperty Name="customerfamily" ColumnName="customerfamily" />
+          <ScalarProperty Name="customername" ColumnName="customername" />
+          <ScalarProperty Name="customerid" ColumnName="customerid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="anbardariModel.Store.sp_alterdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="anbardariModel.Store.sp_creatediagram" />
+    <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="anbardariModel.Store.sp_dropdiagram" />
+    <FunctionImportMapping FunctionImportName="sp_helpdiagramdefinition" FunctionName="anbardariModel.Store.sp_helpdiagramdefinition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="anbardariModel.sp_helpdiagramdefinition_Result">
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_helpdiagrams" FunctionName="anbardariModel.Store.sp_helpdiagrams">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="anbardariModel.sp_helpdiagrams_Result">
+          <ScalarProperty Name="Database" ColumnName="Database" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Owner" ColumnName="Owner" />
+          <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_renamediagram" FunctionName="anbardariModel.Store.sp_renamediagram" />
+    <FunctionImportMapping FunctionImportName="sp_upgraddiagrams" FunctionName="anbardariModel.Store.sp_upgraddiagrams" />
+    <EntitySetMapping Name="orderdetails">
+      <EntityTypeMapping TypeName="anbardariModel.orderdetail">
+        <MappingFragment StoreEntitySet="orderdetail">
+          <ScalarProperty Name="sumprice" ColumnName="sumprice" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="count" ColumnName="count" />
+          <ScalarProperty Name="orderid" ColumnName="orderid" />
+          <ScalarProperty Name="productid" ColumnName="productid" />
+          <ScalarProperty Name="orderdetailid" ColumnName="orderdetailid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="orders">
+      <EntityTypeMapping TypeName="anbardariModel.order">
+        <MappingFragment StoreEntitySet="orders">
+          <ScalarProperty Name="orderdate" ColumnName="orderdate" />
+          <ScalarProperty Name="orderprice" ColumnName="orderprice" />
+          <ScalarProperty Name="userid" ColumnName="userid" />
+          <ScalarProperty Name="customerid" ColumnName="customerid" />
+          <ScalarProperty Name="orderid" ColumnName="orderid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="anbardariModel.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="definition" ColumnName="definition" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="name" ColumnName="name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_orderdetail">
+      <EntityTypeMapping TypeName="anbardariModel.v_orderdetail">
+        <MappingFragment StoreEntitySet="v_orderdetail">
+          <ScalarProperty Name="productlastfee" ColumnName="productlastfee" />
+          <ScalarProperty Name="productlastsuply" ColumnName="productlastsuply" />
+          <ScalarProperty Name="productname" ColumnName="productname" />
+          <ScalarProperty Name="sumprice" ColumnName="sumprice" />
+          <ScalarProperty Name="price" ColumnName="price" />
+          <ScalarProperty Name="count" ColumnName="count" />
+          <ScalarProperty Name="orderid" ColumnName="orderid" />
+          <ScalarProperty Name="productid" ColumnName="productid" />
+          <ScalarProperty Name="orderdetailid" ColumnName="orderdetailid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="systemparts">
+      <EntityTypeMapping TypeName="anbardariModel.systempart">
+        <MappingFragment StoreEntitySet="systempart">
+          <ScalarProperty Name="systempartlevel" ColumnName="systempartlevel" />
+          <ScalarProperty Name="systempartdetail" ColumnName="systempartdetail" />
+          <ScalarProperty Name="systempartname" ColumnName="systempartname" />
+          <ScalarProperty Name="systempartid" ColumnName="systempartid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="v_systempart">
+      <EntityTypeMapping TypeName="anbardariModel.v_systempart">
+        <MappingFragment StoreEntitySet="v_systempart">
+          <ScalarProperty Name="childcount" ColumnName="childcount" />
+          <ScalarProperty Name="systempartlevel" ColumnName="systempartlevel" />
+          <ScalarProperty Name="systempartdetail" ColumnName="systempartdetail" />
+          <ScalarProperty Name="systempartname" ColumnName="systempartname" />
+          <ScalarProperty Name="systempartid" ColumnName="systempartid" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

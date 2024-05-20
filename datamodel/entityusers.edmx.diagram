@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="05aee1dae53147d1944f1ad0ef98cc7f" Name="Diagram1" ZoomLevel="99">
+        <EntityTypeShape EntityType="anbardariModel.user" Width="1.5" PointX="7.375" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="anbardariModel.v_users" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="anbardariModel.customer" Width="1.5" PointX="3" PointY="6.75" />
+        <EntityTypeShape EntityType="anbardariModel.product" Width="1.5" PointX="3" PointY="9.5" />
+        <EntityTypeShape EntityType="anbardariModel.v_product" Width="1.5" PointX="5.25" PointY="0.625" />
+        <AssociationConnector Association="anbardariModel.FK_customer_users" />
+        <AssociationConnector Association="anbardariModel.FK_product_users" />
+        <EntityTypeShape EntityType="anbardariModel.inventory" Width="1.5" PointX="11.375" PointY="10" />
+        <EntityTypeShape EntityType="anbardariModel.v_inventory" Width="1.5" PointX="7" PointY="0.5" />
+        <AssociationConnector Association="anbardariModel.FK_inventory_product" />
+        <AssociationConnector Association="anbardariModel.FK_inventory_users" />
+        <EntityTypeShape EntityType="anbardariModel.productprice" Width="1.5" PointX="11.25" PointY="12.875" />
+        <EntityTypeShape EntityType="anbardariModel.userlog" Width="1.5" PointX="3" PointY="13.375" />
+        <EntityTypeShape EntityType="anbardariModel.v_productprice" Width="1.5" PointX="1.25" PointY="0.5" />
+        <AssociationConnector Association="anbardariModel.fk_productprice_productid" />
+        <AssociationConnector Association="anbardariModel.fk_productprice_userid" />
+        <AssociationConnector Association="anbardariModel.FK_userlog_users" />
+        <EntityTypeShape EntityType="anbardariModel.v_userlog" Width="1.5" PointX="8.75" PointY="0.625" />
+        <EntityTypeShape EntityType="anbardariModel.v_customer" Width="1.5" PointX="10.375" PointY="0.75" />
+        <EntityTypeShape EntityType="anbardariModel.orderdetail" Width="1.5" PointX="11.875" PointY="6.375" />
+        <EntityTypeShape EntityType="anbardariModel.order" Width="1.5" PointX="9.625" PointY="6.625" />
+        <EntityTypeShape EntityType="anbardariModel.sysdiagram" Width="1.5" PointX="12.375" PointY="0.75" />
+        <EntityTypeShape EntityType="anbardariModel.v_orderdetail" Width="1.5" PointX="5.375" PointY="12.75" />
+        <AssociationConnector Association="anbardariModel.FK_orders_customer" />
+        <AssociationConnector Association="anbardariModel.FK_orderdetail_orders" />
+        <AssociationConnector Association="anbardariModel.FK_orderdetail_product" />
+        <AssociationConnector Association="anbardariModel.FK_orders_users" />
+        <EntityTypeShape EntityType="anbardariModel.systempart" Width="1.5" PointX="12.375" PointY="3.75" />
+        <EntityTypeShape EntityType="anbardariModel.v_systempart" Width="1.5" PointX="7.375" PointY="12.75" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
